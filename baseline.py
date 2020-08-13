@@ -113,17 +113,6 @@ train.loc[:, 'cluster_haversine'] = haversine_array(train['centroid_pick_lat'].v
 train.loc[:, 'cluster_manhtn'] = dummy_manhattan_distance(train['centroid_pick_lat'].values, train['centroid_pick_long'].values, train['centroid_drop_lat'].values, train['centroid_drop_long'].values)
 train.loc[:, 'cluster_bearing'] = bearing_array(train['centroid_pick_lat'].values, train['centroid_pick_long'].values, train['centroid_drop_lat'].values, train['centroid_drop_long'].values)
 
-# N = 100000
-# city_long_border = (-74.03, -73.75)
-# city_lat_border = (40.63, 40.85)
-# fig, ax = plt.subplots(ncols=1, nrows=1)
-# ax.scatter(train.pickup_longitude.values[:N], train.pickup_latitude.values[:N], s=10, lw=0,
-#            c=train.pickup_cluster[:N].values, cmap='tab20', alpha=0.2)
-# ax.set_xlim(city_long_border)
-# ax.set_ylim(city_lat_border)
-# ax.set_xlabel('Longitude')
-# ax.set_ylabel('Latitude')
-# plt.show()
 
 fr1 = pd.read_csv('fastest_routes_train_part_1.csv',
                   usecols=['id', 'total_distance', 'total_travel_time',  'number_of_steps'])
@@ -203,9 +192,7 @@ do_not_use_for_training = ['id', 'pickup_datetime', 'dropoff_datetime', 'pickup_
                            'pickup_dt_bin', 'pickup_datetime_group',
                            'avg_speed_h_gby_pickup_hour', 'avg_speed_m_gby_pickup_hour', 'pickup_minute',
                            'centroid_pick_lat', 'centroid_pick_long', 'centroid_drop_lat', 'centroid_drop_long']
-# feature_names = [f for f in train.columns if f not in do_not_use_for_training]
 
-# print train.count()
 
 ### TRAIN DATA ONLY ###
 
